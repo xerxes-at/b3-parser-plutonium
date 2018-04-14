@@ -43,10 +43,10 @@ class Pluto_T6Parser(b3.parsers.pluto_iw5.Pluto_Iw5Parser):
         'message': 'tell %(cid)s %(message)s',
         'say': 'say %(message)s',
         'set': 'set %(name)s "%(value)s"',
-        'kick': 'clientkick_for_reason %(cid)s',
-        'ban': 'clientkick_for_reason %(cid)s',
+        'kick': 'clientkick_for_reason %(cid)s %(reason)s',
+        'ban': 'clientkick_for_reason %(cid)s %(reason)s',
         'unban': 'unban %(name)s',
-        'tempban': 'clientkick_for_reason %(cid)s'
+        'tempban': 'clientkick_for_reason %(cid)s %(reason)s'
     }
     
     _reCvar = re.compile(r'^((?P<cvar>[a-z][a-z0-9_]*)).*?(is).*?(\")(?P<value>.*)(\")', re.IGNORECASE)

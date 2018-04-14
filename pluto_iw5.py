@@ -43,10 +43,10 @@ class Pluto_Iw5Parser(b3.parsers.cod8.Cod8Parser):
         'message': 'tell %(cid)s %(message)s', #gib cmd
         'say': 'say %(message)s',
         'set': 'set %(name)s "%(value)s"',
-        'kick': 'dropClient %(cid)s',
-        'ban': 'dropClient %(cid)s',
+        'kick': 'dropClient %(cid)s %(reason)s',
+        'ban': 'dropClient %(cid)s %(reason)s',
         'unban': 'unban %(name)s',
-        'tempban': 'dropClient %(cid)s'
+        'tempban': 'dropClient %(cid)s %(reason)s'
     }
     
     _reMapNameFromStatus = re.compile(r'^map:\s+(?P<map>[a-z0-9_-]+).*$', re.IGNORECASE)
