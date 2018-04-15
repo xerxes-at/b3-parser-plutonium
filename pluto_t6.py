@@ -18,6 +18,7 @@
 #
 # CHANGELOG
 #
+# 15/04/2018 - 0.7 - Xerxes - Fixed kicks/bans and their reasons.
 # 06/04/2018 - 0.6 - Xerxes - Removed unused code.
 # 06/04/2018 - 0.5 - Xerxes - Added the maximum line lengh for say and tell.
 # 06/04/2018 - 0.4 - Xerxes - Fixed a crash due to the logging on our custom setter for the GUID.
@@ -26,7 +27,7 @@
 # 17/03/2018 - 0.1 - Xerxes - parser created.
 
 __author__ = 'Xerxes'
-__version__ = '0.6'
+__version__ = '0.7'
 
 import b3.parsers.pluto_iw5
 import re
@@ -40,13 +41,13 @@ class Pluto_T6Parser(b3.parsers.pluto_iw5.Pluto_Iw5Parser):
     _guidLength = 1
     _line_length = 72
     _commands = {
-        'message': 'tell %(cid)s %(message)s',
-        'say': 'say %(message)s',
+        'message': 'tell %(cid)s "%(message)s"',
+        'say': 'say "%(message)s"',
         'set': 'set %(name)s "%(value)s"',
-        'kick': 'clientkick_for_reason %(cid)s %(reason)s',
-        'ban': 'clientkick_for_reason %(cid)s %(reason)s',
-        'unban': 'unban %(name)s',
-        'tempban': 'clientkick_for_reason %(cid)s %(reason)s'
+        'kick': 'clientkick_for_reason %(cid)s "%(reason)s"',
+        'ban': 'clientkick_for_reason %(cid)s "%(reason)s"',
+        'unban': 'unban "%(name)s"',
+        'tempban': 'clientkick_for_reason %(cid)s "%(reason)s"'
     }
     
     _reCvar = re.compile(r'^((?P<cvar>[a-z][a-z0-9_]*)).*?(is).*?(\")(?P<value>.*)(\")', re.IGNORECASE)

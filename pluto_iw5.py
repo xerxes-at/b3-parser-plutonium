@@ -24,9 +24,10 @@
 # ??/12/2017 - 0.4 - Xerxes - Replaced the ping for Bots with 999.
 # ??/12/2017 - 0.5 - Xerxes - Cleaned up the result of getCvar.
 # 06/04/2018 - 0.6 - Xerxes - Removed unused code.
+# 15/04/2018 - 0.7 - Xerxes - Added reasons to the ban/kick messages.
 
 __author__ = 'Xerxes'
-__version__ = '0.6'
+__version__ = '0.7'
 
 import b3.parsers.cod8
 import re
@@ -40,13 +41,13 @@ class Pluto_Iw5Parser(b3.parsers.cod8.Cod8Parser):
     _guidLength = 16
     _line_length = 43
     _commands = {
-        'message': 'tell %(cid)s %(message)s', #gib cmd
-        'say': 'say %(message)s',
+        'message': 'tell %(cid)s "%(message)s"',
+        'say': 'say "%(message)s"',
         'set': 'set %(name)s "%(value)s"',
-        'kick': 'dropClient %(cid)s %(reason)s',
-        'ban': 'dropClient %(cid)s %(reason)s',
-        'unban': 'unban %(name)s',
-        'tempban': 'dropClient %(cid)s %(reason)s'
+        'kick': 'dropClient %(cid)s "%(reason)s"',
+        'ban': 'dropClient %(cid)s "%(reason)s"',
+        'unban': 'unban "%(name)s"',
+        'tempban': 'dropClient %(cid)s "%(reason)s"'
     }
     
     _reMapNameFromStatus = re.compile(r'^map:\s+(?P<map>[a-z0-9_-]+).*$', re.IGNORECASE)
