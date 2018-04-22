@@ -38,7 +38,7 @@ class Pluto_Iw5Parser(b3.parsers.cod8.Cod8Parser):
 
     gameName = 'PlutoIW5'
     _botPrefix = "FFFFFFFF000B07"
-    _guidLength = 16
+    _guidLength = 15
     _line_length = 43
     _commands = {
         'message': 'tell %(cid)s "%(message)s"',
@@ -156,7 +156,7 @@ class Pluto_Iw5Parser(b3.parsers.cod8.Cod8Parser):
         :param cvar_name: The CVAR name.
         """
         if self._reCvarName.match(cvar_name):
-            val = self.write(cvar_name).replace("\"^7","\"").repalce("\x00","")
+            val = self.write(cvar_name).replace("\"^7","\"").repalce("\0","")
             self.debug('Get cvar %s = [%s]', cvar_name, val)
 
             m = None
